@@ -1,0 +1,22 @@
+services:
+  database:
+    image: influxdb:2.7.8
+    ports:
+      - "8086:8086"
+    volumes:
+      - database_config:/etc/influxdb2
+      - database_data:/var/lib/influxdb2
+
+  sensor-fetch:
+    image: tobedetermined
+    configs:
+      - source: sensor-fetch-config
+        target: /app/.env
+
+configs:
+  sensor-fetch-config:
+    external: true
+
+volumes:
+  database_config:
+  database_data:
