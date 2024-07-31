@@ -4,7 +4,9 @@ services:
     healthcheck:
       disable: true
     ports:
-      - "8086:8086"
+      - target: 8086
+        published: 8086
+        mode: host
     volumes:
       - database_config:/etc/influxdb2
       - database_data:/var/lib/influxdb2
