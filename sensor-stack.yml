@@ -8,7 +8,7 @@ services:
       - database_data:/var/lib/influxdb2
 
   sensor-fetch:
-    image: tobedetermined
+    image: temperature-sensor:latest
     configs:
       - source: sensor-fetch-config
         target: /app/.env
@@ -19,4 +19,6 @@ configs:
 
 volumes:
   database_config:
+    external: true
   database_data:
+    external: true
